@@ -6,68 +6,100 @@ export const BRAND_WHATSAPP_URL = 'https://wa.me/923148334879';
 export const BRAND_ADDRESS =
   'Jamshed Road No. 3, M.L Plaza, Shop No. 4, Opposite Ghazi Bakery, Karachi, Pakistan';
 
-export const BRAND_LOGO_URL =
-  '/assets/aistudio/765958597_1746570996661789_6032994874917564159_n_f034303b.jpg';
+const BASE_URL = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const withBase = (assetPath: string): string =>
+  `${BASE_URL}${assetPath.replace(/^\/+/, '')}`;
+
+export const BRAND_LOGO_URL = withBase(
+  'assets/aistudio/765958597_1746570996661789_6032994874917564159_n_f034303b.jpg'
+);
 
 export const IMAGES = {
   // Generated studio photography
-  heroSmokyBeast: '/src/assets/images/hero_smoky_beast_1794916679831.jpg',
-  heroRollSpecial: '/src/assets/images/hero_roll_special_1794916680318.jpg',
-  classicBurger: '/src/assets/images/burger_classic_smash_1794916681274.jpg',
-  doubleTower: '/src/assets/images/burger_double_tower_1794916681396.jpg',
-  zingster: '/src/assets/images/burger_crispy_zingster_1794916681916.jpg',
-  snacksFries: '/src/assets/images/cat_snacks_fries_1794916681818.jpg',
-  drinks: '/src/assets/images/cat_cold_drinks_1794916684288.jpg',
+  heroSmokyBeast: withBase('src/assets/images/hero_smoky_beast_1794916679831.jpg'),
+  heroRollSpecial: withBase('src/assets/images/hero_roll_special_1794916680318.jpg'),
+  classicBurger: withBase('src/assets/images/burger_classic_smash_1794916681274.jpg'),
+  doubleTower: withBase('src/assets/images/burger_double_tower_1794916681396.jpg'),
+  zingster: withBase('src/assets/images/burger_crispy_zingster_1794916681916.jpg'),
+  snacksFries: withBase('src/assets/images/cat_snacks_fries_1794916681818.jpg'),
+  drinks: withBase('src/assets/images/cat_cold_drinks_1794916684288.jpg'),
 
   // User uploaded Roll N Roll real food photography (all 24 assets)
-  pastaCreamy:
-    '/assets/aistudio/825336570_1791955195456702_5548187968330834806_n_33d4c5af.jpg',
-  clubHalf:
-    '/assets/aistudio/825267373_1795858571733031_4342849689479552230_n_56ad0e33.jpg',
-  wrapHalf:
-    '/assets/aistudio/825267249_1795858575066364_5683106478526877136_n_13c4ed3b.jpg',
-  zingerHalf:
-    '/assets/aistudio/825267255_1795858598399695_4186183598588551915_n_87cc9f5a.jpg',
-  pizzaHalf:
-    '/assets/aistudio/825267379_1795858618399693_5516934968943871607_n_f50aa7ef.jpg',
-  chickenSoup:
-    '/assets/aistudio/825351275_1796753594976862_1887006753856092559_n_1cfe5444.jpg',
-  tikkaMagic:
-    '/assets/aistudio/840101984_1801229761195912_1064634127093061918_n_74a8fd63.jpg',
-  ultimateBeef:
-    '/assets/aistudio/850671633_1807149207270634_8335035060577884093_n_7b9e840a.jpg',
-  crispyBitesBox:
-    '/assets/aistudio/842678245_1803126621006226_7423135185929444418_n_ebea5812.jpg',
-  cheesyPizza:
-    '/assets/aistudio/844395902_1805097007475854_8009037226804917609_n_4e890b46.jpg',
-  injectedNuggets:
-    '/assets/aistudio/843118523_1802272391091649_8716307046697906808_n_78d75d82.jpg',
-  injectedZinger:
-    '/assets/aistudio/858265341_1814651609853727_7814418711396587768_n_af09cfd8.jpg',
-  chickenSandwichPlate:
-    '/assets/aistudio/854489339_1809997356985819_2029365092953779774_n_e18167fd.jpg',
-  crispyZingerRoll:
-    '/assets/aistudio/886726222_1826543528664535_5734229982511790629_n_2dc5a073.jpg',
-  khausaBowl:
-    '/assets/aistudio/870935333_1823517198967168_2066085148029613111_n_adaf6d85.jpg',
-  beefPepperoniPizza:
-    '/assets/aistudio/904471974_1835292311122990_5625665940591998178_n_888a7eb3.jpg',
-  specialKunafa:
-    '/assets/aistudio/853582485_1808867057098849_5815714297592788968_n_d332bbca.jpg',
-  pizzaAndPizzaRoll:
-    '/assets/aistudio/884643432_1825521785433376_542588740273818856_n_aa296fb0.jpg',
-  juicyBroast:
-    '/assets/aistudio/863197923_1816669489651939_3399387488961148191_n_3615a4c9.jpg',
-  alfredoPasta:
-    '/assets/aistudio/895709048_1830677451584476_6638625793113272997_n_f21619f2.jpg',
-  weekendComboDeal:
-    '/assets/aistudio/863144816_1819679139350974_7857880448265991820_n_7d119896.jpg',
-  comboDeal5:
-    '/assets/aistudio/854406860_1829652518353636_8770540103001448646_n_9ca25ce4.jpg',
-  tandooriClubSandwich:
-    '/assets/aistudio/904808368_1837514314234123_1348221062923419522_n_ebe3e6ef.jpg',
-  deal19Combo:
-    '/assets/aistudio/904771881_1840579930594228_40021230117382904_n_1046e7a5.jpg',
+  pastaCreamy: withBase(
+    'assets/aistudio/825336570_1791955195456702_5548187968330834806_n_33d4c5af.jpg'
+  ),
+  clubHalf: withBase(
+    'assets/aistudio/825267373_1795858571733031_4342849689479552230_n_56ad0e33.jpg'
+  ),
+  wrapHalf: withBase(
+    'assets/aistudio/825267249_1795858575066364_5683106478526877136_n_13c4ed3b.jpg'
+  ),
+  zingerHalf: withBase(
+    'assets/aistudio/825267255_1795858598399695_4186183598588551915_n_87cc9f5a.jpg'
+  ),
+  pizzaHalf: withBase(
+    'assets/aistudio/825267379_1795858618399693_5516934968943871607_n_f50aa7ef.jpg'
+  ),
+  chickenSoup: withBase(
+    'assets/aistudio/825351275_1796753594976862_1887006753856092559_n_1cfe5444.jpg'
+  ),
+  tikkaMagic: withBase(
+    'assets/aistudio/840101984_1801229761195912_1064634127093061918_n_74a8fd63.jpg'
+  ),
+  ultimateBeef: withBase(
+    'assets/aistudio/850671633_1807149207270634_8335035060577884093_n_7b9e840a.jpg'
+  ),
+  crispyBitesBox: withBase(
+    'assets/aistudio/842678245_1803126621006226_7423135185929444418_n_ebea5812.jpg'
+  ),
+  cheesyPizza: withBase(
+    'assets/aistudio/844395902_1805097007475854_8009037226804917609_n_4e890b46.jpg'
+  ),
+  injectedNuggets: withBase(
+    'assets/aistudio/843118523_1802272391091649_8716307046697906808_n_78d75d82.jpg'
+  ),
+  injectedZinger: withBase(
+    'assets/aistudio/858265341_1814651609853727_7814418711396587768_n_af09cfd8.jpg'
+  ),
+  chickenSandwichPlate: withBase(
+    'assets/aistudio/854489339_1809997356985819_2029365092953779774_n_e18167fd.jpg'
+  ),
+  crispyZingerRoll: withBase(
+    'assets/aistudio/886726222_1826543528664535_5734229982511790629_n_2dc5a073.jpg'
+  ),
+  khausaBowl: withBase(
+    'assets/aistudio/870935333_1823517198967168_2066085148029613111_n_adaf6d85.jpg'
+  ),
+  beefPepperoniPizza: withBase(
+    'assets/aistudio/904471974_1835292311122990_5625665940591998178_n_888a7eb3.jpg'
+  ),
+  specialKunafa: withBase(
+    'assets/aistudio/853582485_1808867057098849_5815714297592788968_n_d332bbca.jpg'
+  ),
+  pizzaAndPizzaRoll: withBase(
+    'assets/aistudio/884643432_1825521785433376_542588740273818856_n_aa296fb0.jpg'
+  ),
+  juicyBroast: withBase(
+    'assets/aistudio/863197923_1816669489651939_3399387488961148191_n_3615a4c9.jpg'
+  ),
+  alfredoPasta: withBase(
+    'assets/aistudio/895709048_1830677451584476_6638625793113272997_n_f21619f2.jpg'
+  ),
+  weekendComboDeal: withBase(
+    'assets/aistudio/863144816_1819679139350974_7857880448265991820_n_7d119896.jpg'
+  ),
+  comboDeal5: withBase(
+    'assets/aistudio/854406860_1829652518353636_8770540103001448646_n_9ca25ce4.jpg'
+  ),
+  tandooriClubSandwich: withBase(
+    'assets/aistudio/904808368_1837514314234123_1348221062923419522_n_ebe3e6ef.jpg'
+  ),
+  deal19Combo: withBase(
+    'assets/aistudio/904771881_1840579930594228_40021230117382904_n_1046e7a5.jpg'
+  ),
 } as const;
 
 export interface HeroSlide {

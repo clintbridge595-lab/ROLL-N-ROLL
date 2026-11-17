@@ -4,14 +4,27 @@ import fs from 'fs';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+function resolveBasePath(): string {
+  if (process.env.VITE_BASE_PATH) {
+    const raw = process.env.VITE_BASE_PATH.trim();
+    return raw.endsWith('/') ? raw : `${raw}/`;
+  }
+  if (process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_REPOSITORY) {
+    const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+    if (repoName) {
+      return `/${repoName}/`;
+    }
+  }
+  return '/';
+}
+
 export default defineConfig(() => {
   return {
+    base: resolveBasePath(),
     plugins: [
       react(),
       tailwindcss(),
-      // Copies src/assets into dist/ so root-relative URLs like
-      // "/src/assets/images/..." (e.g. generate_image output) still resolve
-      // in production builds. Do not remove.
+      // Copies src/assets into dist/ and prepares GitHub Pages SPA fallback + clean asset bundle.
       {
         name: 'copy-unbundled-src-assets',
         apply: 'build',
@@ -24,6 +37,23 @@ export default defineConfig(() => {
           const distAssets = path.resolve(distDir, 'src/assets');
           if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
             fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
+          }
+
+          // Remove unused screen-recording .mp4 files from production dist output
+          const distAistudioDir = path.resolve(distDir, 'assets/aistudio');
+          if (fs.existsSync(distAistudioDir)) {
+            for (const entry of fs.readdirSync(distAistudioDir)) {
+              if (entry.toLowerCase().endsWith('.mp4')) {
+                fs.rmSync(path.join(distAistudioDir, entry), {force: true});
+              }
+            }
+          }
+
+          // Create 404.html fallback for GitHub Pages SPA routing
+          const indexHtml = path.join(distDir, 'index.html');
+          const notFoundHtml = path.join(distDir, '404.html');
+          if (fs.existsSync(indexHtml)) {
+            fs.copyFileSync(indexHtml, notFoundHtml);
           }
         },
       },
